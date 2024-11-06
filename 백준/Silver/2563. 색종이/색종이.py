@@ -24,8 +24,6 @@ for color in colors:
     ground = search(ground, color)
 
 cnt = 0
-for i in range(100):
-    for j in range(100):
-        if ground[i][j] == 1:
-            cnt += 1
+cnt = sum(1 for i in range(100) for j in range(100) if ground[i][j] == 1)
+
 print(cnt)
