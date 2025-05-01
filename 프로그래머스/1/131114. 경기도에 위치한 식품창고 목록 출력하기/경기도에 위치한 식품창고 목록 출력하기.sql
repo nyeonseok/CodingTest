@@ -1,0 +1,1 @@
+select WAREHOUSE_ID, WAREHOUSE_NAME, ADDRESS, case when FREEZER_YN is null then 'N' else FREEZER_YN end as FREEZER_YN from FOOD_WAREHOUSE  where substr(ADDRESS, 1, 3)="경기도"
