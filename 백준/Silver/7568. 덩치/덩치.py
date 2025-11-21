@@ -1,20 +1,23 @@
 import sys
 
 n = int(sys.stdin.readline())
-
-people = []
+dump=[]
+rank=[]
 
 for _ in range(n):
-    kg, cm = map(int, sys.stdin.readline().strip().split())
-    people.append((kg, cm))
+    x,y =list(map(int, sys.stdin.readline().split()))
+    dump.append((x,y))
 
-rank = []
+while len(rank)<n:
+    for i in range(n):
+        ranking = 1
+        ix,iy = dump[i]
+        for j in range(n):
+            if i==j:
+                continue
+            jx,jy = dump[j]
+            if jx>ix and jy>iy:
+                ranking+=1
+        rank.append(ranking)
 
-for i in range(n):
-    cnt = 0
-    for j in range(n):
-        if people[i][0] < people[j][0] and people[i][1] < people[j][1]:
-            cnt += 1
-    rank.append(cnt + 1)
-
-[print(ranking, end=" ") for ranking in rank]
+print(' '.join(map(str,rank)))
